@@ -11,9 +11,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import Rating from '@material-ui/lab/Rating';
 
-import styles from './Deal.styles';
+import styles from './Product.styles';
 
-function Deal(props) {
+function Product(props) {
   const classes = styles();
 
   return (
@@ -48,4 +48,4 @@ function Deal(props) {
   );
 }
 
-export default Deal;
+export default Product;

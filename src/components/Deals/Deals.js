@@ -3,7 +3,7 @@ import React from 'react';
 import Grid       from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Deal from '../Deal/Deal';
+import Product from '../Product/Product';
 import styles from './Deals.styles'
 
 function Deals(props) {
@@ -16,16 +16,16 @@ function Deals(props) {
       </Typography>
       </Grid>
       <Grid item xs={6} md={3}>
-        <Deal/>
+        <Product/>
       </Grid>
       <Grid item xs={6} md={3}>
-        <Deal/>
+        <Product/>
       </Grid>
       <Grid item xs={6} md={3}>
-        <Deal/>
+        <Product/>
       </Grid>
       <Grid item xs={6} md={3}>
-        <Deal/>
+        <Product/>
       </Grid>
     </Grid>
   );
