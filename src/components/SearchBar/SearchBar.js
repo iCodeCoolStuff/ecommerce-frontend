@@ -9,7 +9,7 @@ import SearchIcon     from '@material-ui/icons/Search';
 import styles from './SearchBar.styles';
 
 
-function SearchBar() {
+function SearchBar(props) {
   const classes = styles();
   const [age, setAge] = React.useState('');
   const handleChange = event => {
@@ -18,7 +18,7 @@ function SearchBar() {
 
   return (
     <>
-      <Select 
+      {!props.mobile ? <Select 
         className={classes.categorySelect}
         classes={{
           select: classes.selectPadding
@@ -33,16 +33,16 @@ function SearchBar() {
         <MenuItem value={10}>All Stuffs</MenuItem>
         <MenuItem value={20}>Clothing</MenuItem>
         <MenuItem value={30}>Technology</MenuItem>
-      </Select>
+      </Select> : null}
       <Input
         placeholder="Search..."
         disableUnderline={true}
         fullWidth={true}
         classes={{
-          input: classes.searchInput,
+          input: props.mobile ? classes.mobileSearchInput : classes.searchInput,
           root: classes.root,
         }}
-      ></Input>
+      />
       <Button variant="contained" color="secondary" className={classes.searchButton}>
         <SearchIcon/>
       </Button>

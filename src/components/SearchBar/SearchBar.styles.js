@@ -30,6 +30,12 @@ const useStyles = makeStyles(theme => ({
       boxShadow: 'none'
     },
   },
+  mobileSearchInput: {
+    padding: theme.spacing(1),
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    borderTopLeftRadius: theme.shape.borderRadius,
+    borderBottomLeftRadius: theme.shape.borderRadius,
+  },
 }));
 
 export default useStyles;
