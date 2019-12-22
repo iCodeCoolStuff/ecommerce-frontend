@@ -9,13 +9,13 @@ import MenuIcon   from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-import SearchBar from './SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import styles from './NavBar.styles';
 
 function NavBar() {
   const classes = styles();
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={classes.root}>
       <Toolbar>
         <IconButton edge="start"color="inherit">
           <MenuIcon/>
@@ -41,7 +41,7 @@ function NavBar() {
 
       <Toolbar classes={{root: classes.mobileToolBar}}>
         <div className={classes.mobileSearchDiv}>
-          <SearchBar/>
+          <SearchBar mobile={true} />
         </div>
       </Toolbar>
     </AppBar>

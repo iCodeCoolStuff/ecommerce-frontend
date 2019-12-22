@@ -2,7 +2,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    color: 'inherit',
+    color: theme.palette.common.white,
+    boxShadow: 'none'
   },
   categorySelect: {
     backgroundColor: theme.palette.common.white,
@@ -21,23 +22,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'flex'
     }
-  },
-  searchInput: {
-    padding: theme.spacing(1),
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-  },
-  searchButton: {
-    boxShadow: 'none',
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    '&:hover': {
-      boxShadow: 'none'
-    },
-    '&:focus': {
-      boxShadow: 'none'
-    },
   },
   iconDiv: {
     display: 'flex'
