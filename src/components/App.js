@@ -1,10 +1,20 @@
 import React from 'react';
 
-import NavBar from './NavBar';
+import Container from '@material-ui/core/Container';
+
+import NavBar       from './NavBar/NavBar';
+import HeroCarousel from './HeroCarousel/HeroCarousel';
+import Deals        from './Deals/Deals';
 
 function App() {
   return (
-    <NavBar/>
+    <>
+      <NavBar/>
+      <Container>
+        <HeroCarousel/>
+        <Deals/>
+      </Container>
+    </>
   );
 }
 
