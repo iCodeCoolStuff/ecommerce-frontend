@@ -18,7 +18,7 @@ function Product(props) {
   const classes = styles();
 
   return (
-    <ProductBadge badgeContent="New" color="Secondary" anchorOrigin={{vertical: 'top', horizontal: 'left'}}>
+    <ProductBadge badgeContent="New" color="secondary" anchorOrigin={{vertical: 'top', horizontal: 'left'}}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
