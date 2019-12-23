@@ -13,6 +13,15 @@ const useStyles = makeStyles(theme => ({
   selectPadding: {
     paddingLeft: theme.spacing(1),
   },
+  searchDiv: {
+    position: 'relative',
+    marginLeft: theme.spacing(3),
+    flexGrow: 1,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex'
+    }
+  },
   searchInput: {
     padding: theme.spacing(1),
     backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -35,6 +44,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: fade(theme.palette.common.white, 0.15),
     borderTopLeftRadius: theme.shape.borderRadius,
     borderBottomLeftRadius: theme.shape.borderRadius,
+  },
+  mobileSearchDiv: {
+    position: 'relative',
+    flexGrow: 1,
+    display: 'flex',
   },
 }));
 

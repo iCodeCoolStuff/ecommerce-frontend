@@ -23,9 +23,7 @@ function NavBar() {
         <Typography variant="h6" noWrap={true}>
           Ecommerce Website
         </Typography>
-        <div className={classes.searchDiv}>
-          <SearchBar/>
-        </div>
+        <SearchBar/>
         <div className={classes.mobileFakeDiv}></div>
         <div className={classes.iconDiv}>
           <IconButton color="inherit">
@@ -40,9 +38,7 @@ function NavBar() {
       {/* Mobile Toolbar */}
 
       <Toolbar classes={{root: classes.mobileToolBar}}>
-        <div className={classes.mobileSearchDiv}>
-          <SearchBar mobile={true} />
-        </div>
+        <SearchBar mobile={true} />
       </Toolbar>
     </AppBar>
   );

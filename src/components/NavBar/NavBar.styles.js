@@ -1,4 +1,4 @@
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,15 +14,6 @@ const useStyles = makeStyles(theme => ({
   selectPadding: {
     paddingLeft: theme.spacing(1),
   },
-  searchDiv: {
-    position: 'relative',
-    marginLeft: theme.spacing(3),
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex'
-    }
-  },
   iconDiv: {
     display: 'flex'
   },
@@ -37,11 +28,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     }
-  },
-  mobileSearchDiv: {
-    position: 'relative',
-    flexGrow: 1,
-    display: 'flex',
   },
 }));
 

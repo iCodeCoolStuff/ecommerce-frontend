@@ -8,31 +8,32 @@ import SearchIcon     from '@material-ui/icons/Search';
 
 import styles from './SearchBar.styles';
 
-
 function SearchBar(props) {
   const classes = styles();
-  const [age, setAge] = React.useState('');
-  const handleChange = event => {
-    setAge(event.target.value);
+  const [category, setCategory] = React.useState('');
+
+  const handleCategoryChange = event => {
+    setCategory(event.target.value);
   };
 
   return (
-    <>
-      {!props.mobile ? <Select 
+    <div className={props.mobile ? classes.mobileSearchDiv : classes.searchDiv}>
+      {!props.mobile ? 
+      <Select 
         className={classes.categorySelect}
         classes={{
           select: classes.selectPadding
         }}
         disableUnderline={true}
-        value={age}
-        onChange={handleChange}
+        value={category}
+        onChange={handleCategoryChange}
       >
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value={10}>All Stuffs</MenuItem>
-        <MenuItem value={20}>Clothing</MenuItem>
-        <MenuItem value={30}>Technology</MenuItem>
+        <MenuItem value={1}>All Stuffs</MenuItem>
+        <MenuItem value={2}>Clothing</MenuItem>
+        <MenuItem value={3}>Technology</MenuItem>
       </Select> : null}
       <Input
         placeholder="Search..."
@@ -43,10 +44,10 @@ function SearchBar(props) {
           root: classes.root,
         }}
       />
-      <Button variant="contained" color="secondary" className={classes.searchButton}>
+      <Button type="submit" variant="contained" color="secondary" className={classes.searchButton}>
         <SearchIcon/>
       </Button>
-    </>
+    </div>
   );
 }
 
