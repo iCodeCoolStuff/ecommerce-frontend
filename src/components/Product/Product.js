@@ -26,7 +26,7 @@ function Product(props) {
           title="Contemplative Reptile"
         />
         <CardContent className={classes.cardContentPadding}>
-          <Typography gutterBottom variant="subtitle1">
+          <Typography gutterBottom variant="body2">
             iRobot Roomba 670 Robot Vacuum-Wi-Fi Connectivity,
           </Typography>
           <Rating name="size-small" value={4} readOnly={true} size="small" />
@@ -40,9 +40,9 @@ function Product(props) {
           </Box>
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="medium" color="primary">
-            <Typography variant="button">
-              Add to Cart <ShoppingCartIcon className={classes.cartIcon}/>
+          <Button variant="contained" size="small" color="primary">
+            <Typography variant="body2">
+              Add to Cart <span className={classes.mobileHidden}><ShoppingCartIcon className={classes.cartIcon}/></span>
             </Typography>
           </Button>
         </CardActions>

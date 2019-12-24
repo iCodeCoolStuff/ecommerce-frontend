@@ -28,6 +28,12 @@ const styles = makeStyles(theme => ({
   },
   cardContentPadding: {
     paddingBottom: theme.spacing(0.5)
+  },
+  mobileHidden: {
+    display: 'none',
+    [theme.breakpoints.up('sm')] : {
+      display: 'inline'
+    }
   }
 }));
 
