@@ -41,7 +41,7 @@ function Product(props) {
         </CardContent>
         <CardActions>
           <Button variant="contained" size="small" color="primary">
-            <Typography variant="body2">
+            <Typography variant="button">
               Add to Cart <span className={classes.mobileHidden}><ShoppingCartIcon className={classes.cartIcon}/></span>
             </Typography>
           </Button>

@@ -1,11 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
+  detailPadding: {
+    marginTop: 32,
+    marginBottom: 32 
   },
-  media: {
-    height: 200,
+  rating: {
+    marginBottom: 8
+  },
+  price: {
+    marginBottom: 8,
+  },
+  description: {
+    marginBottom: 8,
   },
   cartIcon: {
     position: 'relative',
@@ -20,21 +27,9 @@ const styles = makeStyles(theme => ({
   listPrice: {
     marginLeft: theme.spacing(0.75),
     position: 'relative',
-    top: 2,
-    fontSize: 14
+    top: 6  ,
+    fontSize: 18
   },
-  priceBox: {
-    padding: theme.spacing(1, 1, 1, 0)
-  },
-  cardContentPadding: {
-    paddingBottom: theme.spacing(0.5)
-  },
-  mobileHidden: {
-    display: 'none',
-    [theme.breakpoints.up('sm')] : {
-      display: 'inline'
-    }
-  }
 }));
 
 export default styles;
