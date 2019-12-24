@@ -12,7 +12,9 @@ import NavBar       from './NavBar/NavBar';
 import HeroCarousel from './HeroCarousel/HeroCarousel';
 import Deals        from './Deals/Deals';
 import Footer       from './Footer/Footer';
+
 import SearchResults from './SearchResults';
+import ProductDetail from './ProductDetail';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <Switch>
           <Route path="/search">
             <SearchResults/>
+          </Route>
+          <Route path="/detail">
+            <ProductDetail/>
           </Route>
           <Route path="/">
             <HeroCarousel/>
