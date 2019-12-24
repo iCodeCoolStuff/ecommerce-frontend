@@ -21,36 +21,36 @@ import Register      from './Register/Register';
 function App() {
   return (
     <BrowserRouter>
-        <Switch>
-          <Route path="/search">
-            <NavBar/>
-            <Container>
-              <SearchResults/>
-            </Container>
-          </Route>
-          <Route path="/detail">
-            <NavBar/>
-            <Container>
-              <ProductDetail/>
-            </Container>
-          </Route>
-          <Route path="/register">
-            <Register/>
-          </Route>
-          <Route path="/login">
-            <Login/>
-          </Route>
-          <Route path="/">
-            <NavBar/>
-            <Container>
-              <HeroCarousel/>
-              <Deals/>
-              <Deals/>
-              <Deals/>
-            </Container>
-          </Route>
-        </Switch>
-        <Footer/>
+      <Switch>
+        <Route path="/search">
+          <NavBar/>
+          <Container>
+            <SearchResults/>
+          </Container>
+        </Route>
+        <Route path="/detail">
+          <NavBar/>
+          <Container>
+            <ProductDetail/>
+          </Container>
+        </Route>
+        <Route path="/register">
+          <Register/>
+        </Route>
+        <Route path="/login">
+          <Login/>
+        </Route>
+        <Route path="/">
+          <NavBar/>
+          <Container>
+            <HeroCarousel/>
+            <Deals/>
+            <Deals/>
+            <Deals/>
+          </Container>
+        </Route>
+      </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }
