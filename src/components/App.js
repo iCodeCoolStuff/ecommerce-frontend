@@ -1,24 +1,38 @@
 import React from 'react';
 
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 import Container from '@material-ui/core/Container';
 
 import NavBar       from './NavBar/NavBar';
 import HeroCarousel from './HeroCarousel/HeroCarousel';
 import Deals        from './Deals/Deals';
 import Footer       from './Footer/Footer';
+import SearchResults from './SearchResults';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <NavBar/>
       <Container>
-        <HeroCarousel/>
-        <Deals/>
-        <Deals/>
-        <Deals/>
+        <Switch>
+          <Route path="/search">
+            <SearchResults/>
+          </Route>
+          <Route path="/">
+            <HeroCarousel/>
+            <Deals/>
+            <Deals/>
+            <Deals/>
+          </Route>
+        </Switch>
         <Footer/>
       </Container>
-    </>
+    </BrowserRouter>
   );
 }
 
