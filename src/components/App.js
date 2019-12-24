@@ -15,28 +15,38 @@ import Footer       from './Footer/Footer';
 
 import SearchResults from './SearchResults';
 import ProductDetail from './ProductDetail';
+import Register      from './Register/Register';
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
-      <Container>
         <Switch>
           <Route path="/search">
-            <SearchResults/>
+            <NavBar/>
+            <Container>
+              <SearchResults/>
+            </Container>
           </Route>
           <Route path="/detail">
-            <ProductDetail/>
+            <NavBar/>
+            <Container>
+              <ProductDetail/>
+            </Container>
+          </Route>
+          <Route path="/register">
+            <Register/>
           </Route>
           <Route path="/">
-            <HeroCarousel/>
-            <Deals/>
-            <Deals/>
-            <Deals/>
+            <NavBar/>
+            <Container>
+              <HeroCarousel/>
+              <Deals/>
+              <Deals/>
+              <Deals/>
+            </Container>
           </Route>
         </Switch>
         <Footer/>
-      </Container>
     </BrowserRouter>
   );
 }
