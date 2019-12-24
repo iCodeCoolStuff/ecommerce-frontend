@@ -26,12 +26,14 @@ function App() {
           <NavBar/>
           <Container>
             <SearchResults/>
+            <Footer/>
           </Container>
         </Route>
         <Route path="/detail">
           <NavBar/>
           <Container>
             <ProductDetail/>
+            <Footer/>
           </Container>
         </Route>
         <Route path="/register">
@@ -47,10 +49,10 @@ function App() {
             <Deals/>
             <Deals/>
             <Deals/>
+            <Footer/>
           </Container>
         </Route>
       </Switch>
-      <Footer/>
     </BrowserRouter>
   );
 }

@@ -14,6 +14,19 @@ import Container from '@material-ui/core/Container';
 
 import styles from './Register.styles';
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="/">
+        Ecommerce Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 export default function SignUp() {
   const classes = styles();
 
@@ -94,6 +107,9 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
     </Container>
   );
 }
