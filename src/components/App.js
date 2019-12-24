@@ -17,6 +17,7 @@ import SearchResults from './SearchResults';
 import ProductDetail from './ProductDetail/ProductDetail';
 import Login         from './Login/Login';
 import Register      from './Register/Register';
+import CartView      from './CartView/CartView'
 
 function App() {
   return (
@@ -41,6 +42,11 @@ function App() {
         </Route>
         <Route path="/login">
           <Login/>
+        </Route>
+        <Route path="/cart">
+          <NavBar/>
+          <CartView/>
+          <Footer/>
         </Route>
         <Route path="/">
           <NavBar/>
