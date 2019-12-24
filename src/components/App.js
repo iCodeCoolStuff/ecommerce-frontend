@@ -15,6 +15,7 @@ import Footer       from './Footer/Footer';
 
 import SearchResults from './SearchResults';
 import ProductDetail from './ProductDetail';
+import Login         from './Login/Login';
 import Register      from './Register/Register';
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register/>
+          </Route>
+          <Route path="/login">
+            <Login/>
           </Route>
           <Route path="/">
             <NavBar/>
