@@ -18,6 +18,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import Login         from './Login/Login';
 import Register      from './Register/Register';
 import CartView      from './CartView/CartView'
+import Checkout      from './Checkout/Checkout';
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
           <NavBar/>
           <CartView/>
           <Footer/>
+        </Route>
+        <Route path="/checkout">
+          <Checkout/>
         </Route>
         <Route path="/">
           <NavBar/>
