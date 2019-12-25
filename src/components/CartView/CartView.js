@@ -33,7 +33,7 @@ class CartView extends React.Component {
 
   render() {
     const { classes } = this.props;
-    return( 
+    return(
       <Container>
         {this.state.redirect ? <Redirect push to="/checkout"/> : null}
         <TableContainer className={classes.table} component={Paper}>
