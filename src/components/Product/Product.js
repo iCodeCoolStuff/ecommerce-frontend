@@ -22,8 +22,7 @@ function Product(props) {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="https://placehold.it/690x800"
-          title="Contemplative Reptile"
+          image="https://placehold.it/690x400"
         />
         <CardContent className={classes.cardContentPadding}>
           <Typography gutterBottom variant="body2">
