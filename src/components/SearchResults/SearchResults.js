@@ -3,12 +3,16 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid       from '@material-ui/core/Grid';
 
-import Product    from './Product/Product'; 
+import Product    from '../Product/Product'; 
+
+import styles from './SearchResults.styles';
 
 function SearchResults(props) {
+  const classes = styles();
+
   return(
     <>
-    <Typography variant="h4">
+    <Typography className={classes.searchTitle} variant="h4">
       Search results for 'technology'
     </Typography>
     <hr/>
