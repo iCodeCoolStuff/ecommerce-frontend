@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-
-const styles = makeStyles(theme => ({
+const styles = theme => ({
   detailPadding: {
     marginTop: 32,
     marginBottom: 32 
@@ -30,6 +28,9 @@ const styles = makeStyles(theme => ({
     top: 6  ,
     fontSize: 18
   },
-}));
+  buttonMargin: {
+    marginTop: theme.spacing(2)
+  }
+});
 
 export default styles;
