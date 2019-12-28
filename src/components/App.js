@@ -20,6 +20,8 @@ import Register      from './Register/Register';
 import CartView      from './CartView/CartView'
 import Checkout      from './Checkout/Checkout';
 
+import ProductDetailPage from './pages/ProductDetailPage';
+
 function App() {
   return (
     <BrowserRouter>
@@ -31,13 +33,7 @@ function App() {
             <Footer/>
           </Container>
         </Route>
-        <Route path="/detail">
-          <NavBar/>
-          <Container>
-            <ProductDetail/>
-            <Footer/>
-          </Container>
-        </Route>
+        <Route path="/product/:slug" component={ProductDetailPage}/>
         <Route path="/register">
           <Register/>
         </Route>
@@ -55,10 +51,12 @@ function App() {
         <Route path="/">
           <NavBar/>
           <Container>
-            <HeroCarousel/>
-            <Deals/>
-            <Deals/>
-            <Deals/>
+            <div style={{paddingBottom: 32}}>
+              <HeroCarousel/>
+              <Deals/>
+              <Deals title="We're betting you'll love..."/>
+              <Deals title="Save on essentials"/>
+            </div>
             <Footer/>
           </Container>
         </Route>
