@@ -7,12 +7,6 @@ const styles = makeStyles(theme => ({
   media: {
     height: 200,
   },
-  cartIcon: {
-    position: 'relative',
-    fontSize: 16, 
-    marginLeft: 2,
-    top: 3
-  },
   strikeOutText: {
     textDecoration: "line-through",
     color: theme.palette.text.disabled
@@ -29,12 +23,6 @@ const styles = makeStyles(theme => ({
   cardContentPadding: {
     paddingBottom: theme.spacing(0.5)
   },
-  mobileHidden: {
-    display: 'none',
-    [theme.breakpoints.up('sm')] : {
-      display: 'inline'
-    }
-  }
 }));
 
 export default styles;
