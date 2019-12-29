@@ -3,14 +3,13 @@ import React from 'react';
 import axios from 'axios';
 
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Rating from '@material-ui/lab/Rating';
 
 import styles from './ProductDetail.styles';
+import CartItemButton from '../CartItemButton/CartItemButton';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -64,11 +63,9 @@ class ProductDetail extends React.Component {
             <Typography className={classes.description} variant="body2">
               {this.state.product.description}
             </Typography>
-            <Button className={classes.buttonMargin} variant="contained" size="small" color="primary">
-              <Typography variant="button">
-                Add to Cart <ShoppingCartIcon className={classes.cartIcon}/>
-              </Typography>
-            </Button>
+            <div className={classes.buttonMargin}>
+              <CartItemButton product={this.state.product}/>
+            </div>
           </Grid>
         </Grid>
       </div>
