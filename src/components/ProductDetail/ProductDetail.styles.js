@@ -12,12 +12,6 @@ const styles = theme => ({
   description: {
     marginBottom: 8,
   },
-  cartIcon: {
-    position: 'relative',
-    fontSize: 16, 
-    marginLeft: 2,
-    top: 3
-  },
   strikeOutText: {
     textDecoration: "line-through",
     color: theme.palette.text.disabled
