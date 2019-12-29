@@ -5,7 +5,10 @@ import Container from '@material-ui/core/Container';
 import NavBar from '../NavBar/NavBar';
 import ProductDetail from '../ProductDetail/ProductDetail';
 import Footer from '../Footer/Footer';
-import Recommendations from '../Recommendations/Recommendations';
+
+import Deals from '../Deals/Deals';
+
+//import Recommendations from '../Recommendations/Recommendations';
 
 function ProductDetailPage(props) {
   return (
@@ -15,7 +18,7 @@ function ProductDetailPage(props) {
         <div style={{paddingBottom: 32}}>
           <ProductDetail slug={props.match.params.slug}/>
           <hr/>
-          <Recommendations/>
+          <Deals title="You might also like"/>
         </div>
         <Footer/>
       </Container>
