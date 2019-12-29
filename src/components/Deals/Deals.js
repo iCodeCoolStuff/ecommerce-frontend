@@ -55,6 +55,7 @@ class Deals extends React.Component {
             new={item.new}
             img={item.images.img690x400}
             slug={item.slug}
+            product={item}
           />
         </Grid>
       )}
