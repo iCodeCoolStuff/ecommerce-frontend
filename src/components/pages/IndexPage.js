@@ -18,8 +18,8 @@ function IndexPage() {
           <Deals title="We're betting you'll love..."/>
           <Deals title="Save on essentials"/>
         </div>
-        <Footer/>
       </Container>
+      <Footer/>
     </>
   );
 }

@@ -13,8 +13,8 @@ function SearchPage() {
     <NavBar/>
     <Container>
       <SearchResults/>
-      <Footer/>
     </Container>
+    <Footer/>
     </>
   );
 }

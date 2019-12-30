@@ -20,8 +20,8 @@ function ProductDetailPage(props) {
           <hr/>
           <Deals title="You might also like"/>
         </div>
-        <Footer/>
       </Container>
+      <Footer/>
     </>
   );
 }
