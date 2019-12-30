@@ -4,9 +4,6 @@ const styles = makeStyles(theme => ({
   card: {
     width: '100%',
   },
-  cardBadge: {
-    display: 'inline'
-  },
   media: {
     height: 200,
   },
