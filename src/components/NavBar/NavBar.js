@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom'
 
 import AppBar         from '@material-ui/core/AppBar';
+import Badge from '@material-ui/core/Badge';
 import IconButton     from '@material-ui/core/IconButton';
 import Toolbar        from '@material-ui/core/Toolbar';
 import Typography     from '@material-ui/core/Typography';
@@ -12,16 +15,25 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import SearchBar from '../SearchBar/SearchBar';
 import styles from './NavBar.styles';
 
-function NavBar() {
+function NavBar(props) {
   const classes = styles();
+  const { items } = props;
+
+  let [clicked, setClicked] = React.useState(false);
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  }
+
   return (
     <AppBar position="static" className={classes.root}>
+      {clicked ? <Redirect push to="/cart"/> : null}
       <Toolbar>
         <IconButton edge="start"color="inherit">
           <MenuIcon/>
         </IconButton>
         <Typography variant="h6" noWrap={true}>
-          Ecommerce Website
+          <Link className={classes.link} to="/">Ecommerce Website</Link>
         </Typography>
         <SearchBar/>
         <div className={classes.mobileFakeDiv}></div>
@@ -29,8 +41,10 @@ function NavBar() {
           <IconButton color="inherit">
             <PersonIcon/>
           </IconButton>
-          <IconButton color="inherit">
-            <ShoppingCartIcon/>
+          <IconButton onClick={() => handleClick()} color="inherit">
+            <Badge badgeContent={items.map(i => i.quantity).reduce((s, v) => s+v, 0)} color="secondary">
+              <ShoppingCartIcon/>
+            </Badge>
           </IconButton>
         </div>
       </Toolbar>
@@ -44,4 +58,10 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+function mapStateToProps(state) {
+  return {
+    items: state.cart.items
+  }
+}
+
+export default connect(mapStateToProps)(NavBar);
