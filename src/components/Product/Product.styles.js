@@ -2,7 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
+    width: '100%',
+  },
+  cardBadge: {
+    display: 'inline'
   },
   media: {
     height: 200,

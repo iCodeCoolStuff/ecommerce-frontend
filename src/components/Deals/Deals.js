@@ -45,7 +45,7 @@ class Deals extends React.Component {
         </Typography>
       </Grid>
       {this.state.items.map((item, index) =>
-        <Grid key={index} item xs={6} md={4} lg={3}>
+        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
           <Product
             name={item.name}
             price={item.price}
