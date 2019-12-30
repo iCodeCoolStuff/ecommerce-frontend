@@ -28,6 +28,19 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     }
   },
+  link: {
+    textDecoration: 'none',
+    color: 'inherit',
+    '&:hover' : {
+      color: 'inherit'
+    },
+    '&:focus' : {
+      color: 'inherit'
+    },
+    '&:active': {
+      color: 'inherit'
+    }
+  }
 }));
 
 export default useStyles;
