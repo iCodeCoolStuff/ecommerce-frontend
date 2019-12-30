@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = makeStyles(theme => ({
   table: {
     marginTop: 32,
     marginBottom: 16,
@@ -22,6 +22,6 @@ const styles = theme => ({
       flexGrow: 1,
     }
   }
-});
+}));
 
 export default styles;
