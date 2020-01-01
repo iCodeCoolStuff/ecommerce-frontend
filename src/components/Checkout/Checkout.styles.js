@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-
-const styles = makeStyles(theme => ({
+const styles = theme => ({
   appBar: {
     position: 'relative',
   },
@@ -39,6 +37,6 @@ const styles = makeStyles(theme => ({
     display: "block",
     paddingTop: 16
   }
-}));
+});
 
 export default styles;
