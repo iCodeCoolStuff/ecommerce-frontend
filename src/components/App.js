@@ -14,18 +14,20 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import SearchPage from './pages/SearchPage';
 import CartPage from './pages/CartPage';
 import IndexPage from './pages/IndexPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/search" component={SearchPage}/>
-        <Route path="/product/:slug" component={ProductDetailPage}/>
-        <Route path="/register" component={Register}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/cart" component={CartPage}/>
-        <Route path="/checkout" component={Checkout}/>
-        <Route path="/" component={IndexPage}/>
+        <Route exact path="/search" component={SearchPage}/>
+        <Route exact path="/product/:slug" component={ProductDetailPage}/>
+        <Route exact path="/register" component={Register}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/cart" component={CartPage}/>
+        <Route exact path="/checkout" component={Checkout}/>
+        <Route exact path="/" component={IndexPage}/>
+        <Route path="*" component={NotFoundPage}/>
       </Switch>
     </BrowserRouter>
   );

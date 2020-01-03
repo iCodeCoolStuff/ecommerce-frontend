@@ -9,6 +9,7 @@ import ProductDetail from '../ProductDetail/ProductDetail';
 import Footer from '../Footer/Footer';
 
 import Recommendations from '../Recommendations/Recommendations';
+import ProductNotFound from '../ProductNotFound';
 
 class ProductDetailPage extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class ProductDetailPage extends React.Component {
     this.state = {
       loading: true,
       product: {},
-      recommendations: []
+      recommendations: [],
+      is404: false,
     };
   }
 
@@ -33,7 +35,13 @@ class ProductDetailPage extends React.Component {
       }))
       .catch(err => console.error(err));
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      if (err.response.status === 404) {
+        this.setState({is404: true});
+      } else {
+        console.error(err);
+      }
+    });
   }
 
   componentDidMount() {
@@ -52,22 +60,26 @@ class ProductDetailPage extends React.Component {
       <>
         <NavBar/>
         <Container>
-          <div style={{paddingBottom: 32}}>
-            {this.state.loading ? <ProductDetail loading={true}/>
-            : <ProductDetail
-              loading={false}
-              img={this.state.product.images.img1920x1080}
-              name={this.state.product.name}
-              price={this.state.product.price.toFixed(2)}
-              list_price={this.state.product.list_price.toFixed(2)}
-              on_sale={this.state.product.on_sale}
-              description={this.state.product.description}
-              product={this.state.product}
-            />
-            }
-            <hr/>
-            <Recommendations items={this.state.recommendations}/>
-          </div>
+          {this.state.is404 ? <ProductNotFound/> :
+
+            <div style={{paddingBottom: 32}}>
+              {this.state.loading ? <ProductDetail loading={true}/>
+              : <ProductDetail
+                loading={false}
+                img={this.state.product.images.img1920x1080}
+                name={this.state.product.name}
+                price={this.state.product.price.toFixed(2)}
+                list_price={this.state.product.list_price.toFixed(2)}
+                on_sale={this.state.product.on_sale}
+                description={this.state.product.description}
+                product={this.state.product}
+              />
+              }
+              <hr/>
+              <Recommendations items={this.state.recommendations}/>
+            </div>
+
+          }
         </Container>
         <Footer/>
       </>
