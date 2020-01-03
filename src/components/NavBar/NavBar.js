@@ -124,9 +124,9 @@ class NavBar extends React.Component {
           />
           <div className={classes.mobileFakeDiv}></div>
           <div className={classes.iconDiv}>
-            <IconButton color="inherit">
+            {/*<IconButton color="inherit">
               <PersonIcon/>
-            </IconButton>
+              </IconButton>*/}
             <IconButton onClick={() => this.handleCartButtonClick()} color="inherit">
               <Badge badgeContent={items.map(i => i.quantity).reduce((s, v) => s+v, 0)} color="secondary">
                 <ShoppingCartIcon/>

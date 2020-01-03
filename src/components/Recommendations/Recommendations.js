@@ -15,50 +15,20 @@ function Recommendations(props) {
           You might also like
         </Typography>
       </Grid>
-      <Grid item xs={6} md={4} lg={3}>
-        <Product
-          name={"placeholder ".repeat(70)}
-          price={1.00}
-          description={"some random crap"}
-          listPrice={0}
-          onSale={false}
-          new={false}
-          img={"https://placehold.it/690x400"}
-        />
+      {props.items.map((item, index) =>
+        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+          <Product
+            name={item.name}
+            price={item.price}
+            description={item.description}
+            listPrice={item.list_price}
+            onSale={item.on_sale}
+            new={item.new}
+            img={item.images.img690x400}
+            slug={item.slug}
+            product={item}/>
       </Grid>
-      <Grid item xs={6} md={4} lg={3}>
-        <Product
-          name={"placeholder ".repeat(70)}
-          price={1.00}
-          description={"some random crap"}
-          listPrice={0}
-          onSale={false}
-          new={false}
-          img={"https://placehold.it/690x400"}
-        />
-      </Grid>
-      <Grid item xs={6} md={4} lg={3}>
-        <Product
-          name={"placeholder ".repeat(70)}
-          price={1.00}
-          description={"some random crap"}
-          listPrice={0}
-          onSale={false}
-          new={false}
-          img={"https://placehold.it/690x400"}
-        />
-      </Grid>
-      <Grid item xs={6} md={4} lg={3}>
-        <Product
-        name={"placeholder ".repeat(70)}
-        price={1.00}
-        description={"some random crap"}
-        listPrice={0}
-        onSale={false}
-        new={false}
-        img={"https://placehold.it/690x400"}
-        />
-      </Grid>
+      )}
     </Grid>
   );
 }
