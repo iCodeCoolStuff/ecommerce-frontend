@@ -33,6 +33,12 @@ class ProductDetail extends React.Component {
     this.getItem();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.slug !== prevProps.slug) {
+      this.getItem();
+    }
+  }
+
   render() {
     const { classes } = this.props;
 
