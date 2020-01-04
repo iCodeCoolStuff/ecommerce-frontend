@@ -14,7 +14,9 @@ function SearchResults(props) {
     return(
       <>
         <Typography className={classes.searchTitle} variant="h4">
-          Search results for {`'${props.query !== '' ? props.query : ' '}'`}
+          {props.query === '' ? 'Search results' : `Search Results for '${props.query}'`}
+
+          {/*Search results for {`'${props.query !== '' ? props.query : ' '}'`}*/}
         </Typography>
         <hr/>
         <Grid className={classes.resultsGrid} container spacing="3">

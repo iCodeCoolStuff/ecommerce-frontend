@@ -144,6 +144,7 @@ class NavBar extends React.Component {
             searchCategory={this.state.searchCategory}
             handleSetSearchText={this.handleSetSearchText}
             handleSetSearchCategory={this.handleSetSearchCategory}
+            handleSearch={this.handleSearch}
           />
         </Toolbar>
         {this.state.searching ?
