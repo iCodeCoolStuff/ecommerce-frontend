@@ -109,9 +109,9 @@ class NavBar extends React.Component {
         }
         {this.state.cartButtonClicked ? <Redirect push to="/cart"/> : null}
         <Toolbar>
-          <IconButton edge="start"color="inherit">
+          {/*<IconButton edge="start"color="inherit">
             <MenuIcon/>
-          </IconButton>
+            </IconButton>*/}
           <Typography variant="h6" noWrap={true}>
             <Link className={classes.link} to="/">Ecommerce Website</Link>
           </Typography>

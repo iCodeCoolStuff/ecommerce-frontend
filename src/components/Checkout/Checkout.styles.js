@@ -33,9 +33,18 @@ const styles = theme => ({
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
-  continueShoppingLink: {
-    display: "block",
-    paddingTop: 16
+  headerLink: {
+    textDecoration: 'none',
+    color: 'inherit',
+    '&:hover' : {
+      color: 'inherit'
+    },
+    '&:focus' : {
+      color: 'inherit'
+    },
+    '&:active': {
+      color: 'inherit'
+    }
   }
 });
 

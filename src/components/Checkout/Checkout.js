@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
+import { Link, Redirect } from 'react-router-dom';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,7 +13,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+//import Link from '@material-ui/core/Link';
 
 import validate from 'validate.js';
 
@@ -22,6 +26,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from './Checkout.styles';
 import { shippingConstraints, creditConstraints } from './constraints';
+import ThankYou from '../ThankYou/ThankYou';
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -69,9 +74,7 @@ class Checkout extends React.Component {
           console.log("invalid step");
           return;
       }
-      console.log(errors);
       if (errors) return;
-      console.log("we made it here");
 
       this.setState({activeStep: this.state.activeStep + 1});
     };
@@ -175,13 +178,17 @@ class Checkout extends React.Component {
   render() {
     const { classes } = this.props;
 
+    if (this.props.items.length === 0) {
+      return <Redirect to="/checkout/error"/>
+    }
+
     return (
       <>
         <CssBaseline />
         <AppBar position="absolute" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
-              Ecommerce Website
+              <Link className={classes.headerLink} to="/">Ecommerce Website</Link>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -199,16 +206,14 @@ class Checkout extends React.Component {
             </Stepper>
             <>
               {this.state.activeStep === this.steps.length ? (
-                <>
-                  <Typography variant="h5" gutterBottom>
-                    Thank you for your order.
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Your order number is #2001539. We have emailed your order confirmation, and will
-                    send you an update when your order has shipped.
-                  </Typography>
-                  <Link className={classes.continueShoppingLink} href="/">Continue Shopping</Link>
-                </>
+                <ThankYou
+                  data={{
+                    ...this.state.shippingInfo,
+                    first_name: this.state.shippingInfo.firstName,
+                    last_name: this.state.shippingInfo.lastName,
+                    items: this.props.items.map(i => ({product_id: i.product.pk, quantity: i.quantity}))
+                  }}
+                />
               ) : (
                 <>
                   {this.getStepContent(this.state.activeStep)}
@@ -238,4 +243,10 @@ class Checkout extends React.Component {
   }  
 }
 
-export default withStyles(styles)(Checkout);
+function mapStateToProps(state) {
+  return {
+    items: state.cart.items
+  };
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(Checkout));
