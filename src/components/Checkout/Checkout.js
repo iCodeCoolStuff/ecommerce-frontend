@@ -188,7 +188,7 @@ class Checkout extends React.Component {
         <AppBar position="absolute" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.headerLink} to="/">Ecommerce Website</Link>
+              <Link className={classes.headerLink} to="/">VirtualMart</Link>
             </Typography>
           </Toolbar>
         </AppBar>
