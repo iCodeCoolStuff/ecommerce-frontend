@@ -113,7 +113,7 @@ class NavBar extends React.Component {
             <MenuIcon/>
             </IconButton>*/}
           <Typography variant="h6" noWrap={true}>
-            <Link className={classes.link} to="/">Ecommerce Website</Link>
+            <Link className={classes.link} to="/">VirtualMart</Link>
           </Typography>
           <SearchBar
             searchText={this.state.searchText}
