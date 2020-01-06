@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/cart" component={CartPage}/>
         <Route exact path="/checkout" component={Checkout}/>
         <Route exact path="/checkout/error" component={CheckoutErrorPage}/>
-        {/*<Route exact path="/admin" component={() => window.location.href="http://localhost:8000/admin"}/>*/}
+        <Route exact path="/admin" component={() => window.location.href="https://api-virtualmart.herokuapp.com/admin/"}/>
         <Route exact path="/" component={IndexPage}/>
         <Route path="*" component={NotFoundPage}/>
       </Switch>
