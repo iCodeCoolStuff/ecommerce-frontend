@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 import axios from 'axios'; 
 
@@ -8,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from './ThankYou.styles';
 import { CircularProgress } from '@material-ui/core';
+import { clearItems } from '../../actions/actions';
 
 
 class ThankYou extends React.Component {
@@ -18,7 +21,6 @@ class ThankYou extends React.Component {
       loading: true,
       order: {}
     }
-    
   }
 
   componentDidMount() {
@@ -27,7 +29,9 @@ class ThankYou extends React.Component {
 
   checkout() {
     axios.post('/v1/orders/', this.props.data)
-    .then(res => this.setState({loading: false, order: res.data}))
+    .then(res => {
+      this.setState({loading: false, order: res.data});
+    })
     .catch(err => console.error(err.data));
   }
 
@@ -51,10 +55,16 @@ class ThankYou extends React.Component {
           Your order number is #{Number(this.state.order.pk) + 1000000}. We have emailed your order confirmation, and will
           send you an update when your order has shipped.
         </Typography>
-        <Link className={classes.continueShoppingLink} to="/">Continue Shopping</Link>
+        <Link onClick={() => this.props.clearItems()} className={classes.continueShoppingLink} to="/">Continue Shopping</Link>
       </>
     );
   }
 }
 
-export default withStyles(styles)(ThankYou);
+function mapDispatchToProps(dispatch) {
+  return {
+    clearItems: () => dispatch(clearItems())
+  };
+}
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(ThankYou));

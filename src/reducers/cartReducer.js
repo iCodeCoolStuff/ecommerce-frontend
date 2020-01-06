@@ -3,7 +3,8 @@ import {
   REMOVE_ITEM,
   SET_ITEM_QUANTITY,
   INCREMENT_ITEM_QUANTITY,
-  DECREMENT_ITEM_QUANTITY
+  DECREMENT_ITEM_QUANTITY,
+  CLEAR_ITEMS
 } from '../actions/types';
 
 import {
@@ -11,7 +12,8 @@ import {
   removeItem,
   setItemQuantity,
   incrementItemQuantity,
-  decrementItemQuantity
+  decrementItemQuantity,
+  clearItems
 } from '../actions/functions';
 
 const initialState = {
@@ -61,6 +63,12 @@ function cartReducer(state = initialState, action) {
         ...state,
         items: decrementItemQuantity(state.items, action)
       }
+      break;
+    case CLEAR_ITEMS:
+      cartState = {
+        ...state,
+        items: clearItems(state.items, action)
+      };
       break;
     default:
       return state;

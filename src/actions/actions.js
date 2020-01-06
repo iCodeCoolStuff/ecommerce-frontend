@@ -4,6 +4,7 @@ import {
   SET_ITEM_QUANTITY,
   INCREMENT_ITEM_QUANTITY,
   DECREMENT_ITEM_QUANTITY,
+  CLEAR_ITEMS
 } from './types';
 
 let nextItemId = 0;
@@ -42,5 +43,11 @@ export function decrementItemQuantity(id) {
   return {
     type: DECREMENT_ITEM_QUANTITY,
     id
+  };
+}
+
+export function clearItems() {
+  return {
+    type: CLEAR_ITEMS
   };
 }

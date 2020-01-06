@@ -33,3 +33,7 @@ export function decrementItemQuantity(state, action) {
   items[itemIndex].quantity -= 1;
   return items;
 }
+
+export function clearItems(state, action) {
+  return [];
+}
