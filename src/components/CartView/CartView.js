@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/button';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
