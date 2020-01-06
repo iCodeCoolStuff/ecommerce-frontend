@@ -1,2 +1,2 @@
-/v1/products/featured https://api-virtualmart.com/v1/products/featured 200
+/v1/* https://api-virtualmart.herokuapp.com/:splat 2--
 /* /index.html 200
