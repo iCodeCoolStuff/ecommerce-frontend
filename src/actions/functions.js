@@ -37,3 +37,15 @@ export function decrementItemQuantity(state, action) {
 export function clearItems(state, action) {
   return [];
 }
+
+export function login(state, action) {
+  return {
+    loggedIn: true
+  };
+}
+
+export function logout(state, action) {
+  return {
+    loggedIn: false
+  };
+}
