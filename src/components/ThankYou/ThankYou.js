@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './ThankYou.styles';
 import { CircularProgress } from '@material-ui/core';
 import { clearItems } from '../../actions/actions';
-
+import { getCSRFToken } from '../../utils';
 
 class ThankYou extends React.Component {
   constructor(props) {
@@ -28,7 +28,8 @@ class ThankYou extends React.Component {
   }
 
   checkout() {
-    axios.post('/v1/orders/', this.props.data)
+    const config = {headers: {'X-CSRFToken': getCSRFToken()}};
+    axios.post('/v1/orders/', this.props.data, config)
     .then(res => {
       this.setState({loading: false, order: res.data});
     })
