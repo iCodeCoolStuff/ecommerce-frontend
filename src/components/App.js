@@ -23,13 +23,13 @@ import CheckoutErrorPage from './pages/CheckoutErrorPage';
 import OrdersPage from './pages/OrdersPage';
 
 import ProtectedRoute from './ProtectedRoute';
-import { checkAuth, removeToken } from '../utils';
+import { checkAuth } from '../utils';
 
 function App(props) {
   if (checkAuth()) {
     props.login();
   } else {
-
+    props.logout();
   }
 
   return (
@@ -53,7 +53,8 @@ function App(props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: () => dispatch(login())
+    login: () => dispatch(login()),
+    logout: () => dispatch(logout())
   };
 }
 
