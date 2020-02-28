@@ -6,6 +6,10 @@ import {
   Route
 } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
+import { login, logout } from '../actions/actions';
+
 import Login         from './Login/Login';
 import Register      from './Register/Register';
 import Checkout      from './Checkout/Checkout';
@@ -18,7 +22,16 @@ import NotFoundPage from './pages/NotFoundPage';
 import CheckoutErrorPage from './pages/CheckoutErrorPage';
 import OrdersPage from './pages/OrdersPage';
 
-function App() {
+import ProtectedRoute from './ProtectedRoute';
+import { checkAuth, removeToken } from '../utils';
+
+function App(props) {
+  if (checkAuth()) {
+    props.login();
+  } else {
+
+  }
+
   return (
     <BrowserRouter>
       <Switch>
@@ -29,7 +42,7 @@ function App() {
         <Route exact path="/cart" component={CartPage}/>
         <Route exact path="/checkout" component={Checkout}/>
         <Route exact path="/checkout/error" component={CheckoutErrorPage}/>
-        <Route exact path="/orders" component={OrdersPage}/>
+        <ProtectedRoute exact path="/orders" component={OrdersPage}/>
         {/*<Route exact path="/admin" component={() => window.location.href="http://localhost:8000/admin"}/>*/}
         <Route exact path="/" component={IndexPage}/>
         <Route path="*" component={NotFoundPage}/>
@@ -38,4 +51,10 @@ function App() {
   );
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    login: () => dispatch(login())
+  };
+}
+
+export default connect(null, mapDispatchToProps)(App);

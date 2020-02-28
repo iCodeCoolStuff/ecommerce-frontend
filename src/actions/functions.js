@@ -1,3 +1,5 @@
+import { removeToken } from '../utils';
+
 export function addItem(state, action) {
   return [...state, {
     id: action.id,
@@ -45,6 +47,7 @@ export function login(state, action) {
 }
 
 export function logout(state, action) {
+  removeToken();
   return {
     loggedIn: false
   };

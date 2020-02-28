@@ -29,3 +29,14 @@ export function getPayload(token) {
   let payload = localStorage.getItem('jwt').split('.')[1];
   return JSON.parse(atob(payload));
 }
+
+export function checkAuth() {
+  let payload = getPayload();
+  
+
+  if (payload['exp'] > new Date().getTime()/1000) {
+    return true;
+  }
+
+  return false;
+}
