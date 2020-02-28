@@ -30,7 +30,7 @@ const styles = theme => ({
     textDecoration: 'none',
     color: 'inherit',
     '&:hover' : {
-      color: 'inherit'
+      color: 'inherit',
     },
     '&:focus' : {
       color: 'inherit'
@@ -38,7 +38,29 @@ const styles = theme => ({
     '&:active': {
       color: 'inherit'
     }
-  }
+  },
+  accountActions: {
+    display: 'flex',
+    paddingLeft: theme.spacing(1)
+  },
+  accountLink: {
+    textDecoration: 'none',
+    color: 'inherit',
+    '&:hover' : {
+      color: 'inherit',
+      textDecoration: 'underline',
+    },
+    '&:focus' : {
+      color: 'inherit'
+    },
+    '&:active': {
+      color: 'inherit'
+    }
+  },
+  accountActions: {
+    display: 'flex',
+    paddingLeft: theme.spacing(1)
+  },
 });
 
 export default styles;

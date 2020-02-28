@@ -1,9 +1,9 @@
 export function setToken(token) {
-  localStorage.setItem('jwt', token);
+  localStorage.setItem('jwt', JSON.stringify(token));
 }
 
 export function getToken() {
-  return localStorage.getItem('jwt');
+  return JSON.parse(localStorage.getItem('jwt'))['access'];
 }
 
 export function removeToken() {
@@ -23,4 +23,9 @@ export function getCSRFToken() {
       }
   }
   return cookieValue;
+}
+
+export function getPayload(token) {
+  let payload = localStorage.getItem('jwt').split('.')[1];
+  return JSON.parse(atob(payload));
 }

@@ -16,6 +16,7 @@ import CartPage from './pages/CartPage';
 import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CheckoutErrorPage from './pages/CheckoutErrorPage';
+import OrdersPage from './pages/OrdersPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/cart" component={CartPage}/>
         <Route exact path="/checkout" component={Checkout}/>
         <Route exact path="/checkout/error" component={CheckoutErrorPage}/>
+        <Route exact path="/orders" component={OrdersPage}/>
         {/*<Route exact path="/admin" component={() => window.location.href="http://localhost:8000/admin"}/>*/}
         <Route exact path="/" component={IndexPage}/>
         <Route path="*" component={NotFoundPage}/>
