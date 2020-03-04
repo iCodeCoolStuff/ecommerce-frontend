@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './ThankYou.styles';
 import { CircularProgress } from '@material-ui/core';
 import { clearItems } from '../../actions/actions';
-import { getCSRFToken } from '../../utils';
+import { getCSRFToken, checkAuth, getPayload, getToken } from '../../utils';
 
 class ThankYou extends React.Component {
   constructor(props) {
@@ -28,12 +28,33 @@ class ThankYou extends React.Component {
   }
 
   checkout() {
-    const config = {headers: {'X-CSRFToken': getCSRFToken()}};
-    axios.post('/v1/orders/', this.props.data, config)
-    .then(res => {
-      this.setState({loading: false, order: res.data});
-    })
-    .catch(err => console.error(err.data));
+    if (checkAuth()) {
+
+      const payload = getPayload();
+      const token = getToken();
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'X-CSRFToken': getCSRFToken()
+        }
+      }
+
+      axios.post(`/v1/users/${payload['user_id']}/orders/`, this.props.data, config)
+      .then(res => {
+        this.setState({loading: false, order: res.data});
+      })
+      .catch(err => console.error(err.data));
+     
+    } else {
+
+      let config = {headers: {'X-CSRFToken': getCSRFToken()}};
+      axios.post('/v1/orders/', this.props.data, config)
+      .then(res => {
+        this.setState({loading: false, order: res.data});
+      })
+      .catch(err => console.error(err.data));
+
+    }
   }
 
   render() {
