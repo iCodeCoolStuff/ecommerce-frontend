@@ -26,11 +26,15 @@ export function getCSRFToken() {
 }
 
 export function getPayload(token) {
-  let payload = localStorage.getItem('jwt').split('.')[1];
+  let payload = getToken().split('.')[1];
   return JSON.parse(atob(payload));
 }
 
 export function checkAuth() {
+  if (!localStorage.getItem('jwt')) {
+    return false;
+  }
+
   let payload = getPayload();
   
 
