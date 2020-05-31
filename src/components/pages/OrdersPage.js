@@ -6,6 +6,7 @@ import NavBar from '../NavBar/NavBar';
 import Container from '@material-ui/core/Container';
 import Footer from '../Footer/Footer';
 import Orders from '../Orders/Orders';
+import ProgressDiv from '../ProgressDiv';
 
 import { getToken, getPayload } from '../../utils';
 
@@ -34,7 +35,6 @@ class OrdersPage extends React.Component {
           loading: false,
           orders: res.data
         });
-        console.log("data: " + JSON.stringify(res.data));
       })
       .catch(err => console.error(err));
   }
@@ -48,7 +48,10 @@ class OrdersPage extends React.Component {
       <>
         <NavBar/>
         <Container>
-          <Orders/>
+          {this.state.loading ? <ProgressDiv/> : 
+          <div style={{paddingTop: "16px", paddingBottom: "16px"}}>
+            <Orders orders={this.state.orders}/>
+          </div>}
         </Container>
         <Footer/>
       </>

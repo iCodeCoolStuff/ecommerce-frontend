@@ -16,6 +16,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 import { logout } from '../../actions/actions';
+import { checkAuth, getPayload } from '../../utils';
 
 
 function HamburgerDrawer(props) {
@@ -29,7 +30,7 @@ function HamburgerDrawer(props) {
           <ListItemIcon>
             <AccountCircleIcon/>
           </ListItemIcon>
-          Sample Text
+          {checkAuth() ? getPayload()['first_name'] + " " + getPayload()['last_name'] : null}
         </ListItem>
         <Divider/>
         <ListItem button onClick={() => setRedirect(true)}>

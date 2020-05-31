@@ -21,6 +21,7 @@ import IndexPage from './pages/IndexPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CheckoutErrorPage from './pages/CheckoutErrorPage';
 import OrdersPage from './pages/OrdersPage';
+import OrderDetailPage from './pages/OrderDetailPage';
 
 import ProtectedRoute from './ProtectedRoute';
 import { checkAuth } from '../utils';
@@ -43,6 +44,7 @@ function App(props) {
         <Route exact path="/checkout" component={Checkout}/>
         <Route exact path="/checkout/error" component={CheckoutErrorPage}/>
         <ProtectedRoute exact path="/orders" component={OrdersPage}/>
+        <ProtectedRoute exact path="/orders/:id" component={OrderDetailPage}/>
         {/*<Route exact path="/admin" component={() => window.location.href="http://localhost:8000/admin"}/>*/}
         <Route exact path="/" component={IndexPage}/>
         <Route path="*" component={NotFoundPage}/>
