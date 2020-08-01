@@ -19,7 +19,7 @@ import { logout } from '../../actions/actions';
 import { checkAuth, getPayload } from '../../utils';
 
 
-function HamburgerDrawer(props) {
+function AccountDrawer(props) {
   let [redirect, setRedirect] = React.useState(false);
 
   return (
@@ -60,4 +60,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(HamburgerDrawer));
+export default connect(null, mapDispatchToProps)(withRouter(AccountDrawer));

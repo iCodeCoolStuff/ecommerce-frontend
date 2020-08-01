@@ -57,10 +57,11 @@ const styles = theme => ({
       color: 'inherit'
     }
   },
-  accountActions: {
-    display: 'flex',
-    paddingLeft: theme.spacing(1)
-  },
+  mobileMenu: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    }
+  }
 });
 
 export default styles;

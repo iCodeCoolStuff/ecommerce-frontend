@@ -7,44 +7,82 @@ import Container from '@material-ui/core/Container';
 import NavBar from '../NavBar/NavBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Footer from '../Footer/Footer';
+import ProgressDiv from '../ProgressDiv';
 
 
-function SearchPage(props) {
-  if (props.location.state) {
-    return(
-      <>
-      <NavBar/>
-      <Container>
-        <SearchResults items={props.location.state.items} query={props.location.state.query}/>
-      </Container>
-      <Footer/>
-      </>
-    );
+class SearchPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: (this.props.location.search) ? true : false,
+      items: [],
+      q: ''
+    };
   }
 
-  let params = new URLSearchParams(props.location.search);
-  let q = params.get('q');
-  let category = params.get('category');
+  componentDidMount() {
+    this.getSearchResults();
+  }
 
-  let items = []
-  
-  axios.get('/v1/search', {params: {q, category}})
-  .then(res => {
-    items = res.data;
-  })
-  .catch(err => {
-    console.error(err);
-  });
+  componentDidUpdate(prevProps) {
+    if (this.props.location.search !== prevProps.location.search) {
+      this.getSearchResults();
+    }
+  }
 
-  return(
-    <>
-    <NavBar/>
-    <Container>
-      <SearchResults items={items} query={q}/>
-    </Container>
-    <Footer/>
-    </>
-  );
+  getSearchResults() {
+    let params = new URLSearchParams(this.props.location.search);
+    let config = {
+      params: {
+        q: encodeURIComponent(params.get('q')),
+        category: encodeURIComponent(params.get('category'))
+      }
+    };
+    
+    axios.get('/v1/search', config)
+    .then(res => {
+      this.setState({items: res.data, q: params.get('q'), loading: false})
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+  render() {
+    if (this.props.location.state) {
+      return(
+        <>
+        <NavBar/>
+        <Container>
+          <SearchResults items={this.props.location.state.items} query={this.props.location.state.query}/>
+        </Container>
+        <Footer/>
+        </>
+      );
+    }
+
+    if (this.state.loading) {
+      return(
+        <>
+        <NavBar/>
+        <Container>
+          <ProgressDiv/>
+        </Container>
+        <Footer/>
+        </>
+      );
+    } else {
+      return(
+        <>
+        <NavBar/>
+        <Container>
+          <SearchResults items={this.state.items} query={this.state.q}/>
+        </Container>
+        <Footer/>
+        </>
+      );
+    }
+  } 
 }
 
 export default SearchPage;

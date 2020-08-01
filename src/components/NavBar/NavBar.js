@@ -20,7 +20,8 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './NavBar.styles';
 
 import SearchBar from '../SearchBar/SearchBar';
-import HamburgerDrawer from '../HamburgerDrawer/HamburgerDrawer';
+import AccountDrawer from '../AccountDrawer/AccountDrawer';
+import HamburgerDrawer from '../HamburgerDrawer';
 
 
 class NavBar extends React.Component {
@@ -34,7 +35,8 @@ class NavBar extends React.Component {
       searching: false,
       searchItems: [],
       searchFinished: false,
-      accountDrawerState: false
+      accountDrawerState: false,
+      hamburgerDrawerState: false
     }
 
     this.handleCartButtonClick = () => {
@@ -44,7 +46,15 @@ class NavBar extends React.Component {
     this.handleSetSearchText = this.handleSetSearchText.bind(this);
     this.handleSetSearchCategory = this.handleSetSearchCategory.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.closeDrawer = this.closeDrawer.bind(this)
+    this.closeDrawer = this.closeDrawer.bind(this);
+
+    this.openHamburgerDrawer = () => {
+      this.setState({hamburgerDrawerState: true});
+    };
+
+    this.closeHamburgerDrawer = () => {
+      this.setState({hamburgerDrawerState: false});
+    };
   }
 
   handleSetSearchText(searchText) {
@@ -119,9 +129,11 @@ class NavBar extends React.Component {
         }
         {this.state.cartButtonClicked ? <Redirect push to="/cart"/> : null}
         <Toolbar>
-          {/*<IconButton edge="start"color="inherit">
-            <MenuIcon/>
-            </IconButton>*/}
+          <div className={classes.mobileMenu}>
+            <IconButton edge="start"color="inherit" onClick={this.openHamburgerDrawer}>
+              <MenuIcon/>
+            </IconButton>
+          </div>
           <Typography variant="h6" noWrap={true}>
             <Link className={classes.link} to="/">VirtualMart</Link>
           </Typography>
@@ -169,7 +181,8 @@ class NavBar extends React.Component {
           <LinearProgress variant="indeterminate" color="secondary"/> : null
         }
       </AppBar>
-      <HamburgerDrawer open={this.state.accountDrawerState} closeFunc={this.closeDrawer}/>
+      <AccountDrawer open={this.state.accountDrawerState} closeFunc={this.closeDrawer}/>
+      <HamburgerDrawer open={this.state.hamburgerDrawerState} closeFunc={this.closeHamburgerDrawer}/>
       </>
     );
   }
