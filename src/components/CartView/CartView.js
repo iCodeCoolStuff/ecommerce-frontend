@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { removeItem } from '../../actions/actions';
+
+
 import { Redirect } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
@@ -17,7 +20,9 @@ import TableRow from '@material-ui/core/TableRow';
 import styles from './CartView.styles';
 import { Typography } from '@material-ui/core';
 
-function CartView ({items}) {
+import CloseIcon from '@material-ui/icons/Close';
+
+function CartView (props) {
   const classes = styles();
 
   let [redirect, setRedirect] = React.useState(false);
@@ -42,9 +47,12 @@ function CartView ({items}) {
           </TableHead>
           <TableBody>
 
-            {items.map((item, index) =>
+            {props.items.map((item, index) =>
               <TableRow key={index}>
-                <TableCell align="left"><img style={{maxWidth: 100}} src={item.product.images.img100x100}/></TableCell>
+                <TableCell style={{position: "relative"}} align="left">
+                  <img style={{maxWidth: 100}} src={item.product.images.img100x100}/>
+                  <Button variant="contained" color="secondary" className={classes.xButton} onClick={(e) => props.removeItem(item.id)}><CloseIcon/></Button>
+                </TableCell>
                 <TableCell align="left">{item.product.name}</TableCell>
                 <TableCell align="left">${item.product.price.toFixed(2)}</TableCell>
                 <TableCell align="left">{item.quantity}</TableCell>
@@ -59,7 +67,7 @@ function CartView ({items}) {
         <Box className={classes.mobileHidden} flexGrow={1}/>
         <Box className={classes.totalBox}>
           <Typography variant="h6">
-            Total: ${items.map(i => i.product.price * i.quantity).reduce((s, v) => s+v, 0).toFixed(2)}
+            Total: ${props.items.map(i => i.product.price * i.quantity).reduce((s, v) => s+v, 0).toFixed(2)}
           </Typography>
             <Button variant="contained" fullWidth={true} color="primary" onClick={() => handleClick()}>
               <Typography variant="button">
@@ -78,4 +86,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CartView);
+function mapDispatchToProps(dispatch) {
+  return {
+    removeItem: id => dispatch(removeItem(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartView);
