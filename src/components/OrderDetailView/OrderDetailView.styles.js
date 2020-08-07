@@ -21,13 +21,6 @@ const styles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')] : {
       flexGrow: 1,
     }
-  },
-  xButton: {
-    position: "absolute",
-    bottom: "5px",
-    right: "5px",
-    padding: "5px",
-    minWidth: "0"
   }
 }));
 

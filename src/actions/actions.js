@@ -4,7 +4,9 @@ import {
   SET_ITEM_QUANTITY,
   INCREMENT_ITEM_QUANTITY,
   DECREMENT_ITEM_QUANTITY,
-  CLEAR_ITEMS
+  CLEAR_ITEMS,
+  LOG_IN,
+  LOG_OUT
 } from './types';
 
 let nextItemId = 0;
@@ -50,4 +52,16 @@ export function clearItems() {
   return {
     type: CLEAR_ITEMS
   };
+}
+
+export function login() {
+  return {
+    type: LOG_IN
+  }
+}
+
+export function logout() {
+  return {
+    type: LOG_OUT
+  }
 }
