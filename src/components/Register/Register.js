@@ -113,6 +113,7 @@ class Register extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const passwordHelperText = "Passwords must be at least 8 characters long, and contain one letter and one number";
 
     return (      
       <Container component="main" maxWidth="xs">
@@ -181,7 +182,7 @@ class Register extends React.Component {
                   id="password"
                   onChange={e => this.handleFormInfoChange(e, 'password')}
                   error={this.state.formErrors ? this.state.formErrors.password : false}
-                  helperText={this.state.formErrors ? (this.state.formErrors.password ? this.state.formErrors.password[0] : null) : null}
+                  helperText={this.state.formErrors ? (this.state.formErrors.password ? this.state.formErrors.password[0] : passwordHelperText) : null}
                   autoComplete="current-password"
                 />
               </Grid>

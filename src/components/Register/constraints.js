@@ -30,8 +30,8 @@ const registerConstraints = {
       message: '^Field can\'t be blank'
     },
     format: {
-      pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-      message: 'must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
+      pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      message: 'Passwords must be at least 8 characters long, and contain one letter and one number'
     }
   },
 };
