@@ -45,7 +45,7 @@ function App(props) {
         <Route exact path="/checkout/error" component={CheckoutErrorPage}/>
         <ProtectedRoute exact path="/orders" component={OrdersPage}/>
         <ProtectedRoute exact path="/orders/:id" component={OrderDetailPage}/>
-        {/*<Route exact path="/admin" component={() => window.location.href="http://localhost:8000/admin"}/>*/}
+        <Route exact path="/admin" component={() => window.location.href="https://api-virtualmart.herokuapp.com/admin/"}/>
         <Route exact path="/" component={IndexPage}/>
         <Route path="*" component={NotFoundPage}/>
       </Switch>
