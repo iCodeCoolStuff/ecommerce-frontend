@@ -21,6 +21,7 @@ import styles from './CartView.styles';
 import { Typography } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
+import QuantityCounter from '../QuantityCounter/QuantityCounter';
 
 function CartView (props) {
   const classes = styles();
@@ -55,7 +56,9 @@ function CartView (props) {
                 </TableCell>
                 <TableCell align="left">{item.product.name}</TableCell>
                 <TableCell align="left">${item.product.price.toFixed(2)}</TableCell>
-                <TableCell align="left">{item.quantity}</TableCell>
+                <TableCell align="left">
+                  <QuantityCounter itemId={item.id}/>
+                </TableCell>
                 <TableCell align="left">${(item.product.price * item.quantity).toFixed(2)}</TableCell>
               </TableRow>
             )}
