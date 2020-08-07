@@ -113,7 +113,7 @@ class Register extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const passwordHelperText = "Passwords must be at least 8 characters long, and contain one letter and one number";
+    const passwordHelperText = "Passwords must be at least 8 characters long, and contain one capital letter and one number";
 
     return (      
       <Container component="main" maxWidth="xs">
