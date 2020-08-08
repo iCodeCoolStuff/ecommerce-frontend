@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 import AppBar         from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
 import Badge from '@material-ui/core/Badge';
 import IconButton     from '@material-ui/core/IconButton';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -16,9 +17,12 @@ import PersonIcon from '@material-ui/icons/Person';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { withStyles } from '@material-ui/core/styles';
+import styles from './NavBar.styles';
 
 import SearchBar from '../SearchBar/SearchBar';
-import styles from './NavBar.styles';
+import AccountDrawer from '../AccountDrawer/AccountDrawer';
+import HamburgerDrawer from '../HamburgerDrawer';
+
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -31,6 +35,8 @@ class NavBar extends React.Component {
       searching: false,
       searchItems: [],
       searchFinished: false,
+      accountDrawerState: false,
+      hamburgerDrawerState: false
     }
 
     this.handleCartButtonClick = () => {
@@ -40,6 +46,15 @@ class NavBar extends React.Component {
     this.handleSetSearchText = this.handleSetSearchText.bind(this);
     this.handleSetSearchCategory = this.handleSetSearchCategory.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
+
+    this.openHamburgerDrawer = () => {
+      this.setState({hamburgerDrawerState: true});
+    };
+
+    this.closeHamburgerDrawer = () => {
+      this.setState({hamburgerDrawerState: false});
+    };
   }
 
   handleSetSearchText(searchText) {
@@ -91,10 +106,15 @@ class NavBar extends React.Component {
     }
   }
 
+  closeDrawer() {
+    this.setState({accountDrawerState: false});
+  }
+
   render() {
     const { items, classes } = this.props;
 
     return (
+      <>
       <AppBar position="static" className={classes.root}>
         {this.state.searchFinished ? 
           <Redirect 
@@ -109,9 +129,11 @@ class NavBar extends React.Component {
         }
         {this.state.cartButtonClicked ? <Redirect push to="/cart"/> : null}
         <Toolbar>
-          {/*<IconButton edge="start"color="inherit">
-            <MenuIcon/>
-            </IconButton>*/}
+          <div className={classes.mobileMenu}>
+            <IconButton edge="start"color="inherit" onClick={this.openHamburgerDrawer}>
+              <MenuIcon/>
+            </IconButton>
+          </div>
           <Typography variant="h6" noWrap={true}>
             <Link className={classes.link} to="/">VirtualMart</Link>
           </Typography>
@@ -124,9 +146,17 @@ class NavBar extends React.Component {
           />
           <div className={classes.mobileFakeDiv}></div>
           <div className={classes.iconDiv}>
-            {/*<IconButton color="inherit">
+            {this.props.loggedIn ?
+
+            <IconButton onClick={() => this.setState({accountDrawerState: !this.state.accountDrawerState})} color="inherit">
               <PersonIcon/>
-              </IconButton>*/}
+            </IconButton> 
+            :
+             <Box className={classes.accountActions} justifyContent="center" flexDirection="column">
+              <div>
+                <Link className={classes.accountLink} to="/login">Login</Link> / <Link className={classes.accountLink} to="/register">Register</Link>
+              </div>
+            </Box> }
             <IconButton onClick={() => this.handleCartButtonClick()} color="inherit">
               <Badge badgeContent={items.map(i => i.quantity).reduce((s, v) => s+v, 0)} color="secondary">
                 <ShoppingCartIcon/>
@@ -151,14 +181,18 @@ class NavBar extends React.Component {
           <LinearProgress variant="indeterminate" color="secondary"/> : null
         }
       </AppBar>
+      <AccountDrawer open={this.state.accountDrawerState} closeFunc={this.closeDrawer}/>
+      <HamburgerDrawer open={this.state.hamburgerDrawerState} closeFunc={this.closeHamburgerDrawer}/>
+      </>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    items: state.cart.items
-  }
+    items: state.cart.items,
+    loggedIn: state.auth.loggedIn
+  };
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(NavBar));
